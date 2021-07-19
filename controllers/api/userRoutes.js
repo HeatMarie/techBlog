@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
             attributes: { exclude: ['password'] }
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     }
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
         const userData = await User.findByPk({
             attributes: {exclude: ['password'] },
@@ -110,7 +110,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', async (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
@@ -120,7 +120,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res)  => {
+router.put('/:id', async (req, res)  => {
     try{
         const userData = User.update(req.body, {
             individualHooks: true,
@@ -142,7 +142,7 @@ router.put('/:id', (req, res)  => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const userData = User.destroy({
             where: {
