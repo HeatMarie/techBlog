@@ -4,24 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Blog</title>
-    <link rel="stylesheet" type="text/css" href="/css/jass.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>MVC Tech Blog</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-    <header>
+    <div class="wrapper">
+        <header class="hero">
+            <div>
+                <nav class"nav">
+                    <a class="link" href="/">Home</a>
+                    <a class="link" href="/dashboard">Dashboard</a>
+                    {{#if logged_in}}
+                    <a class="link" href="/" id="logout">Logout</a>
+                    {{else}}
+                    <a class="link" href="/login">Login</a>
+                    {{/if}}
+                </nav>
+            </div>
 
-    </header>
+            <h1 class="app-title"><i class="fab "></i>The Tech Blog</h1>
+        </header>
 
-    <main>
-        <h1>Hi there</h1>
-        {{{ body }}}
-    </main>
+        <main>
+            {{{ body }}}
+        </main>
+    </div>
 
-    <footer>
+    {{#if logged_in}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
 
-    </footer>
 </body>
 
 </html>
