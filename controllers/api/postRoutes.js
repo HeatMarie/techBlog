@@ -5,12 +5,6 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try{
         const postData = Post.findAll({
-            attributes: [
-                'id',
-                'title',
-                'content',
-                'created_at'
-            ],
             order: [
                 ['created_at', 'DESC']
             ],
@@ -39,12 +33,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const postData = Post.findByPk(req.params.id, {
-            attribute: [
-                'id',
-                'content',
-                'title',
-                'created_at'
-            ],
+
             include: [
                 {
                     model: User,
@@ -78,11 +67,13 @@ router.post('/', withAuth, async (req, res) => {
         const newPost = await Post.create({
             title: req.body.title,
             content: req.body.content,
+            create_at: req.body,
             user_id: req.session.user_id,
         });
-
+        console.log(newPost)
         res.status(200).json(newPost);
     } catch (err){
+        console.log(err)
         res.status(400).json(err);
     }
 });

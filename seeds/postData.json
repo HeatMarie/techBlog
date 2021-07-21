@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Why MVC is so important.",
+    "content": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic.",
+    "created_at": "7/20/2021",
+    "user_id": "1"
+  },
+  {
+    "id": "2",
+    "title": "Authentication vs. Authorization",
+    "content": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to the system.",
+    "created_at": "7/20/2021",
+    "user_id": "1"
+  },
+  {
+    "id": "3",
+    "title": "This hw is very large.",
+    "content": "This hw assignment feels like a project all on its own. Not only do we have to complete a functioning front end from scratch, but we also have to write an entire functioning back-end. We will be using almost everything learned the entire course. This hw assignment should just be merged into the project only.",
+    "created_at": "7/20/2021",
+    "user_id": "1"
+  }
+]

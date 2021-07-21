@@ -3,25 +3,18 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/homepage', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            attributes: [
-                'id',
-                'title',
-                'content',
-                'created_at'
-            ],
-
             include: [
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
+                // {
+                //     model: Comment,
+                //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                //     include: {
+                //         model: User,
+                //         attributes: ['username']
+                //     }
+                // },
                 {
                     model: User,
                     attributes: ['username']
@@ -53,24 +46,18 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('post/:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: [
-                'id',
-                'content',
-                'title',
-                'created_at'
-            ],
             include: [
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
+                // {
+                //     model: Comment,
+                //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                //     include: {
+                //         model: User,
+                //         attributes: ['username']
+                //     }
+                // },
                 {
                     model: User,
                     attributes: ['username'],
@@ -83,7 +70,7 @@ router.get('post/:id', async (req, res) => {
         }
         const post = postData.get({ plain: true });
         console.log(post)
-        res.render('single-post', {
+        res.render('post', {
             post,
             logged_in: req.session.logged_in
         });
