@@ -9,26 +9,13 @@ router.get('/', withAuth, async(req, res) => {
             include: [{ model: Post}],
         });
 
-        const user = userData.get({ plain: true });
-        console.log(user);
-        res.render('dashboard', {
-            user,
-            logged_in: true
-        });
-    } catch (err) {
-        console.log(err)
-        res.status(500).json(err);
-    }
-})
-
-router.get('/dashboard', withAuth, async (req,res) => {
-    try{
         const postData = await Post.findAll({
             where: {
                 user_id: req.session.user_id
             },
 
-            include: [ {
+            include: [ 
+                {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                 include: {
@@ -36,26 +23,32 @@ router.get('/dashboard', withAuth, async (req,res) => {
                     attributes: ['username']
                 }
             },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ],
-    });
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ],
+        });
+        const posts = postData.map((post) => post.get({ plain: true }));    
 
-    const posts = postData.map((post) => post.get({ plain: true }));
-    
 
-    res.render('dashboard', {
-        posts,
-        logged_in: true
-    });
+        const user = userData.get({ plain: true });
+        console.log('user', user);
+        console.log('post', user.posts);
+        res.render('dashboard', {
+            example: "MY NAME",
+            posts,
+            user,
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
     }
-});
-router.get('/post/:id', withAuth, async (req, res) => {
+})
+
+
+router.get('/edit/:id', withAuth, async (req, res) => {
     try{
         const postData = await Post.findByPk(req.params.id, {
             include: [
@@ -80,11 +73,12 @@ router.get('/post/:id', withAuth, async (req, res) => {
         }
 
         const post = postData.get({ plain: true });
-
-        res.render('edit-post', {
+        console.log('post', post)
+        res.render('edit', {
             post,
-            logged_in: true
+            logged_in: req.session.logged_in
         });
+
     } catch (err) {
         console.log(err)
         res.status(500).json(err);

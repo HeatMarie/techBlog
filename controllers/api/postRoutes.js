@@ -2,65 +2,6 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
-    try{
-        const postData = Post.findAll({
-            order: [
-                ['created_at', 'DESC']
-            ],
-            include: [{
-                model: User,
-                attributes: ['username']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-            ]
-        });
-        res.status(200).json(postData.reverse());
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-router.get('/:id', async (req, res) => {
-    try {
-        const postData = Post.findByPk(req.params.id, {
-
-            include: [
-                {
-                    model: User,
-                    attributes: ['username']
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
-
-            ]
-        })
-        if (!postData) {
-            res.status(404).json({ message: 'No post with that id exists' });
-            return;
-        }
-        res.status(200).json(postData);
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
 
 router.post('/', withAuth, async (req, res) => {
     try{
@@ -80,26 +21,26 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req,res) => {
     try {
-        const postData = Post.update({
+        const editPost = await Post.update({
             title: req.body.title,
-            content: req.body.content
+            content: req.body.content,
         }, {
             where: {
                 id: req.params.id
             }
         })
 
-        if (!postData) {
+        if (!editPost) {
             res.status(404).json({ message: 'No post with that id exists'});
         }
-        res.status(200).json(postData);
+        res.status(200).json(editPost);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 })
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/delete/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.destroy({
             where: {
