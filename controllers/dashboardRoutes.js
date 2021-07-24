@@ -90,4 +90,44 @@ router.get('/newPost', (req, res) => {
 })
 
 
+router.get('/newComment', (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        });
+
+        if (!postData){
+            res.status(404).json({ message: 'No blog found with this id.'})
+            return;
+        }
+
+        const post = await postData.get({ plain: true });
+
+        const commentData = await Comment.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        });
+
+        const comments = await commentData.map((comment) => comment.get({ plain: true }));
+
+        res.render('newComment'),{
+            post,
+            comments,
+            logged_in: req.session.logged_in
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router;
