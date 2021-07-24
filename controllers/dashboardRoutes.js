@@ -90,8 +90,9 @@ router.get('/newPost', (req, res) => {
 })
 
 
-router.get('/newComment', (req, res) => {
+router.get('/newComment/:id', async (req, res) => {
     try {
+        console.log("Fuck this")
         const postData = await Post.findByPk(req.params.id, {
             include: [
                 {
@@ -102,7 +103,7 @@ router.get('/newComment', (req, res) => {
         });
 
         if (!postData){
-            res.status(404).json({ message: 'No blog found with this id.'})
+            res.status(404).json({ message: 'Nothing found with this id.'})
             return;
         }
 

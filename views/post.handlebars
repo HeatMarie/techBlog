@@ -6,7 +6,7 @@
         <p class="card-body">{{post.content}}</p>
     <div>
         {{#if logged_in}}
-        <a href="newComment/{{post.id}}"><button>Add a Comment</button></a>
+        <a href="/newComment/{{post.id}}"><button>Add a Comment</button></a>
         {{/if}}
         {{#if comments.length}}
         {{#each comments as |comment|}}
