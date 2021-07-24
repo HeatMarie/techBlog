@@ -3,9 +3,9 @@
     <form method="post" class="card-body new-post-form" id="newComment">
 
         <label class="form-label" for="content">Content</label>
-        <input id="content" name="content" class="form-input" />
+        <input type="text" id="content" name="content" class="form-input" />
 
-        <button type="submit" class="btn">Submit</button>
+        <button type="submit" value="Submit" class="btn">Submit</button>
     </form>
 </div>
 <div>
@@ -20,7 +20,7 @@
     <div>
         {{#if comments.length}}
         {{#each comments as |comment|}}
-        {{> comment-details}}
+        {{> comments }}
         {{/each}}
         {{else}}
         <p>Be the first to comment and give some love.</p>
@@ -28,4 +28,4 @@
     </div>
 </div>
 
-<script src="../js/addComment.js"></script>
+<script src="/js/newComment.js"></script>

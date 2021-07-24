@@ -42,9 +42,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/signup', (req, res) => {
-    res.render('signup');
-});
+
 
 router.get('/post/:id', async (req, res) => {
     try {
@@ -70,6 +68,9 @@ router.get('/post/:id', async (req, res) => {
         }
         const post = postData.get({ plain: true });
 
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        console.log(post);
+        console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 
         const commentData = await Comment.findAll({
             where: {
@@ -85,7 +86,7 @@ router.get('/post/:id', async (req, res) => {
 
         const comments = await commentData.map((comment) => comment.get({ plain: true }));
 
-        console.log(post)
+        // console.log(post)
         res.render('post', {
             post,
             comments,
@@ -97,15 +98,10 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-router.get('/post-comments', async (req,res) => {
+router.get('/comments', async (req,res) => {
+    console.log("does it get this?")
     try{
         const userData = await Post.findByPk(req.params.id, {
-            attributes: [
-                'id',
-                'content',
-                'title',
-                'created_at'
-            ],
             include: [
                 {
                     model: Comment,
@@ -125,10 +121,12 @@ router.get('/post-comments', async (req,res) => {
         const user = userData.get({ plain: true });
 
 
-        res.render('post-comments', {
+        res.render('comments', {
             post,
+            user,
             logged_in: req.session.logged_in
         });
+        console.log('comments', comments)
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

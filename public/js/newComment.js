@@ -1,7 +1,7 @@
-const newCommentFormHandler = async(e) => {
-    e.preventDefault();
+const newCommentHandler = async(e) => {
+    // e.preventDefault();
     
-    const content = document.getElementById('newComment').value;
+    const content = document.getElementById('content').value;
     const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
     if(content) {

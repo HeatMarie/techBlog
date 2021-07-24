@@ -33,8 +33,8 @@ router.get('/', withAuth, async(req, res) => {
 
 
         const user = userData.get({ plain: true });
-        console.log('user', user);
-        console.log('post', user.posts);
+        // console.log('user', user);
+        // console.log('post', user.posts);
         res.render('dashboard', {
             example: "MY NAME",
             posts,
@@ -73,7 +73,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         }
 
         const post = postData.get({ plain: true });
-        console.log('post', post)
+        // console.log('post', post)
         res.render('edit', {
             post,
             logged_in: req.session.logged_in
@@ -88,6 +88,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 router.get('/newPost', (req, res) => {
     res.render('newPost')
 })
+
 
 
 router.get('/newComment/:id', async (req, res) => {
