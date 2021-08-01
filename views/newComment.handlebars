@@ -1,17 +1,19 @@
 <div class="card">
     <h3 class="card-header">Add a comment</h3>
     <form method="post" class="card-body new-post-form" id="newComment">
-
+        <div>
         <label class="form-label" for="content">Content</label>
         <input type="text" id="content" name="content" class="form-input" />
+        </div>
 
-        <button type="submit" value="Submit" class="btn">Submit</button>
+
+        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 <div>
     <div>
         <p>
-            {{ post.title }} Posted by {{ post.user.username }} created on {{ format_date created_at }}
+            {{ post.title }} Posted by {{ post.user.username }} created on {{ format_date comments.created_at }}
         </p>
         <p>
             {{ post.content }}

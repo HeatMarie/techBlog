@@ -1,21 +1,28 @@
-<div>
+<div class="welcome">
   <div>
     <h2>Welcome, {{user.username}}!</h2>
   </div>
 </div>
 
 
-<section>
-  <h2>Your Posts</h2>
+
+
+<div class="card dashboard-container">
+  <div class="card-header">
+   <h2> Your Posts </h2>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item ugh">
     {{#each posts as |post|}}
       {{> dashboardPostinfo }}
     {{/each}}
+    </li>
+  </ul>
+  <button type="submit" class="btn dashboard-link"><a class="link" href="/dashboard/newPost">+ New Post</a></button>
+</div>
 
-</section>
 
 
-<button type="submit" class="btn"><a class="link" href="/dashboard/newPost">+ New Post</a></button>
 
 
-<script src="../js/logout.js"></script>
 

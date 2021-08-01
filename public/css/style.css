@@ -1,0 +1,154 @@
+/* Photo by Felix Mittermeier from Pexels */
+
+
+:root {
+
+    --theDark: #161E29;
+    --thePink: #8281B9;
+    --theGreen: #B5F44A;
+    --theDarkBlue: #121a25;
+    --theBlue: #2e4d6a; 
+    --theWhite: #fbf5f3; 
+    --theGrey: #525969;
+    --thePurple: #3e366f;
+  }
+
+
+
+.hero {
+    margin-top:0px;
+    background-image: url("/images/headerBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#header {
+    text-align: center;
+    height: 200px;
+    color: var(--theGreen);
+    padding-top: 50px;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--theDark);
+}
+
+nav a {
+    margin-left: 20px;
+    padding-top: 20px;
+    color: var(--theGreen);
+}
+
+.bg-color {
+    background-color: var(--theBlack);
+}
+
+form {
+    width: 100%;
+    margin-top: 10%;
+}
+.form-input, 
+.btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    border-width: 2px;
+    border-radius: 3%;
+}
+
+ .the-Logins{
+    width: 100%;
+    margin-top: 4rem;
+    margin-left: 10%;
+
+}
+
+
+.btn {
+    background-color: var(--thePurple);
+    color: var(--theWhite)
+}
+
+/* Homepage CSS */
+.homepage-header {
+    margin: 5% 0 5% 12%;
+    color: var(--theDark)
+}
+
+.homepage-container {
+    margin: 2% 12% 5% 12%;
+    width: 85%;
+    color: var(--theWhite);
+}
+
+.homepage-card {
+    background-color: var(--theDark);
+    margin-top: 5%;
+    color: var(--theWhite)
+}
+
+.homepage-card-title a {
+    color: var(--theGreen);
+}
+
+.homepage-card-body {
+    width: 100%;
+}
+
+.welcome {
+    margin-top: 50px;
+    margin-left: 10%;
+}
+
+.dashboard-container {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 20%;
+    width: 70%;
+    background-color: var(--theDarkBlue);
+    color: var(--theGreen);
+    text-align: center;
+    border-color: var(--theDark);
+
+}
+
+.ugh {
+    text-align: left;
+}
+
+.dashboard-li {
+    margin-top: 10px;
+}
+
+.dashboard-link {
+    display: flex;
+    align-self: center;
+    text-align: center;
+    color: var(--theWhite);
+    width: 7rem;
+}
+
+.dashboard-link a {
+    color: var(--theWhite)
+}
+
+
+.newpost-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 5%;
+
+}
+
+.newpost-card-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,12 +1,14 @@
-<div class="card">
+
+
+<div class="card mb-3 newpost-card">
     <h3 class="card-header">Edit Post</h3>
-    <form method="put" id="editform">
-        <label for="post-title" class="form-label">Title</label>
+    <form method="put" id="editform" class="card-body new-post-form newpost-card-body">
+        <label for="post-title" class="form-label newpost-labels">Title</label>
         <textarea name="post-title" id="post-title" class="form-input">{{post.title}}</textarea>
         
         
-        <label class="form-label" for="content">Content</label>
-        <textarea id="content" name="content">{{post.content}}</textarea>
+        <label class="form-label newpost-labels" for="content">Content</label>
+        <textarea id="content" name="content" class="form-input form-control rows="4">{{post.content}}</textarea>
         
         
         <button type="submit" value="Submit" class="btn" id="edit">Update Post</button>

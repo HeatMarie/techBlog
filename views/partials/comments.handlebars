@@ -1,12 +1,12 @@
 <div class="comments">
     <div class="card">
-        <h3 class="card-header"></h3>
+        <h3 class="card-header commentCardHeader"></h3>
         <section class="comment card-body">
             <div class="text">
                 {{comment_text}}
             </div>
             <div class="meta">
-                {{user.username}} 
+               <p> - {{user.username}} </p>
                 <p> {{format_date created_at}} </p>
             </div>
         </section>
