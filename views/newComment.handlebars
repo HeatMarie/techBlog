@@ -11,6 +11,7 @@
     </form>
 </div>
 <div>
+    {{#if comments.length}}
     <div>
         <p>
             {{ post.title }} Posted by {{ post.user.username }} created on {{ format_date comments.created_at }}
@@ -19,6 +20,7 @@
             {{ post.content }}
         </p>
     </div>
+    {{/if}}
     <div>
         {{#if comments.length}}
         {{#each comments as |comment|}}
