@@ -59,7 +59,7 @@ A place where developers can write vent posts about their arch-nemesis semi-colo
 
 ## The Results
 
-![Gif Demo](images/ecommercegiffy.gif)
+![image](images/dashboard.jpg)
 
 
 
