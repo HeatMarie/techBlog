@@ -70,7 +70,9 @@ A place where developers can write vent posts about their arch-nemesis semi-colo
 https://heats-tech-blog.herokuapp.com/
 
 ## Comments 
+This was a little pesky fella. It was a start to finish project that will continue to be an on going project. There is major room for growth, but the base and the start is there. 
 
+I'm amazed at the things I learned along the road to completing this assignment. I started out completely confused on how to use merge the use of Modals and APIs and the idea of intertwining them with Handlebars, sigh. That's how I felt. Sad. But in the end I completed it, and I'm happy with that. It's amazing what happens when you have the focus. 
 
 
 
